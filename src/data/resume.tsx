@@ -4,14 +4,14 @@ import { HomeIcon, Gamepad2, InstagramIcon } from "lucide-react";
 export const DATA = {
   name: "Yawar Hussain",
   initials: "YH",
-  url: "https://dillion.io",
-  location: "Bangalore,  India",
-  locationLink: "https://www.google.com/maps/place/sanfrancisco",
+  url: "https://yawerhussain42.github.io/",
+  location: "Bangalore, India",
+  locationLink: "",
   description:
     "Senior Frontend Engineer | Expert in React, Angular, JavaScript, TypeScript, ElectronJS| Proven Team Leader | Web Development Specialist",
   summary:
     "I specialize in developing high-performing, scalable user interfaces with modern JavaScript frameworks like React. Driven by a passion for crafting seamless digital experiences, I collaborate closely with cross-functional teams to deliver robust, user-centric designs. Leveraging Agile methodologies, I ensure timely project completions while maintaining high code quality. As a mentor and leader, I conduct rigorous code reviews and foster a culture of continuous improvement, focusing on creating solutions that are both testable and scalable. My goal is to push the boundaries of technology and user experience, delivering innovative solutions that delight users and drive business success.",
-  avatarUrl: "/me.jpg",
+  avatarUrl: "/Portfolio/me.jpg",
   skills: [
     "React",
     "Javascript",
