@@ -20,10 +20,12 @@ const Board: React.FC<BoardProps> = ({ squares, onClick }) => {
       {squares.map((square, index) => (
         <motion.button
           key={index}
-          className={`w-24 h-24 flex items-center justify-center text-4xl font-bold border-4 ${square === "X" ? "border-blue-500 text-blue-500" : "border-red-500 text-red-500"} bg-white shadow-lg rounded-md`}
+          className={`w-20 h-20 flex items-center justify-center text-3xl font-bold border-4 ${
+            square === "X" ? "border-blue-400 text-blue-400" : "border-red-400 text-red-400"
+          } bg-gray-800 text-white shadow-lg rounded-md`}
           onClick={() => onClick(index)}
           whileTap={{ scale: 0.95 }}
-          whileHover={{ scale: 1.05, backgroundColor: square ? "#e0e0e0" : "#f0f0f0" }}
+          whileHover={{ scale: 1.05, backgroundColor: square ? "#333" : "#444" }}
           transition={{ type: "spring", stiffness: 300 }}
         >
           {square}
@@ -41,14 +43,13 @@ const Page: React.FC = () => {
   useEffect(() => {
     if (xIsNext || gameOver) return;
 
-    // Computer's turn
-    const availableMoves = squares.map((square, index) => square === null ? index : -1).filter(index => index !== -1);
+    // Computer's turn with smarter AI
+    const availableMoves = squares.map((square, index) => (square === null ? index : -1)).filter((index) => index !== -1);
     if (availableMoves.length === 0) return;
 
-    // AI makes a move (random strategy)
-    const randomMove = availableMoves[Math.floor(Math.random() * availableMoves.length)];
+    const bestMove = findBestMove(squares);
     const newSquares = squares.slice();
-    newSquares[randomMove] = "O";
+    newSquares[bestMove] = "O";
     setSquares(newSquares);
     setXIsNext(true);
 
@@ -78,14 +79,14 @@ const Page: React.FC = () => {
 
   return (
     <motion.div
-      className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-blue-400 to-red-400 overflow-hidden"
+      className="flex flex-col items-center justify-center overflow-hidden"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <div className="flex flex-col items-center justify-center h-[80vh] w-full max-w-md p-4 bg-white rounded-lg shadow-lg">
+      <div className="flex flex-col items-center justify-center w-full max-w-md p-4 m-4 rounded-lg shadow-xl">
         <motion.h1
-          className="text-4xl font-bold mb-4 text-blue-700"
+          className="text-4xl font-bold mb-4"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
@@ -128,6 +129,44 @@ const calculateWinner = (squares: Square[]): Square => {
     }
   }
   return null;
+};
+
+// Minimax algorithm for finding the best move
+const findBestMove = (squares: Square[]): number => {
+  const availableMoves = squares.map((square, index) => (square === null ? index : -1)).filter((index) => index !== -1);
+
+  let bestMove = availableMoves[0];
+  let bestScore = -Infinity;
+
+  for (const move of availableMoves) {
+    const newSquares = squares.slice();
+    newSquares[move] = "O";
+    const score = minimax(newSquares, false);
+    if (score > bestScore) {
+      bestScore = score;
+      bestMove = move;
+    }
+  }
+
+  return bestMove;
+};
+
+const minimax = (squares: Square[], isMaximizing: boolean): number => {
+  const winner = calculateWinner(squares);
+  if (winner === "O") return 10;
+  if (winner === "X") return -10;
+  if (!squares.includes(null)) return 0;
+
+  const scores = [];
+  const availableMoves = squares.map((square, index) => (square === null ? index : -1)).filter((index) => index !== -1);
+
+  for (const move of availableMoves) {
+    const newSquares = squares.slice();
+    newSquares[move] = isMaximizing ? "O" : "X";
+    scores.push(minimax(newSquares, !isMaximizing));
+  }
+
+  return isMaximizing ? Math.max(...scores) : Math.min(...scores);
 };
 
 export default Page;
