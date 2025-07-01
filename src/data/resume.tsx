@@ -81,6 +81,18 @@ export const DATA = {
 
   work: [
     {
+      company: "Impact Analytics",
+      href: "https://www.impactanalytics.co/",
+      badges: [],
+      location: "Bangalore, India",
+      title: "Senior Frontend Engineer",
+      logoUrl: "/Portfolio/impact.jpeg",
+      start: "Feb 2025",
+      end: "Present",
+      description:
+        "As a Senior Frontend Engineer in the Base Pricing team at Impact Analytics, I architect and develop scalable, enterprise-grade user interfaces for a retail pricing optimization platform used by Fortune 500 companies. I leverage React with TypeScript, TanStack Query for server state management, Redux for local state orchestration, and Tailwind CSS for consistent, utility-first styling. The application is built on our in-house component library, impact-ui, where I contribute actively to design consistency and component extensibility. My work involves implementing dynamic, schema-driven forms, reusable filter hierarchies, and multi-step workflows that handle complex pricing logic. I’ve enforced best practices through ESLint, Prettier, and Husky-based automation, and facilitated continuous improvement via design reviews, pair programming, and performance profiling. Collaborating closely with product managers, designers, and data science teams, I ensure our frontend delivers precision, usability, and performance across a global user base.",
+    },
+    {
       company: "Getafix Technologies",
       href: "https://getafixtechnologies.com/",
       badges: [],
@@ -88,7 +100,7 @@ export const DATA = {
       title: "Senior Frontend Engineer",
       logoUrl: "/Portfolio/getafix.png",
       start: "Aug 2018",
-      end: "Present",
+      end: "Jan 2025",
       description:
         "As a Senior Frontend Engineer at Getafix, I have played a pivotal role in developing high-performing, scalable user-facing features using React and other modern JavaScript frameworks, ensuring optimal user experiences. I collaborated with cross-functional teams including Back-End Developers, Graphic Designers, and UX Designers to build and maintain frontend applications at scale. I have mentored engineers, ensured successful project deliveries through rigorous code reviews, and fostered a collaborative work environment. Implementing Agile methodologies was central to my approach, enabling timely project completions while maintaining high code quality standards. Additionally, I enhanced application and feature coding for testability and scalability, resolving complex bugs to deliver robust and high-quality frontend solutions.",
     },
@@ -104,6 +116,16 @@ export const DATA = {
     },
   ],
   projects: [
+    {
+      title: "Impact Analytics – Base Pricing Platform",
+      dates: "2025 - Present",
+      location: "Bangalore, India",
+      description:
+        "Leading the frontend architecture for Impact Analytics’ Base Pricing platform—a mission-critical SaaS product that empowers global retailers to manage and optimize pricing strategies across regions, zones, and customer levels. Developed highly configurable, schema-driven forms and reusable filter hierarchies to support dynamic pricing workflows and complex approval chains. Implemented role-based access control, multi-form synchronization, and performant client-server communication using TanStack Query and Redux. Contributed to our internal component library, impact-ui, ensuring consistency and accessibility across the application. Tailored the UI using Tailwind CSS for scalable theming and responsiveness. Enabled seamless collaboration between cross-functional teams by integrating Storybook for component documentation and enforcing code quality through automated checks (ESLint, Prettier, Husky). Designed with performance, maintainability, and business impact at the forefront, the platform supports high-volume data operations and real-time interactions for Fortune 500 clients.",
+      image: "/Portfolio/impact.jpeg",
+      mlh: "",
+      links: [],
+    },
     {
       title: "Quantum Arc",
       dates: "2022 - Present",
